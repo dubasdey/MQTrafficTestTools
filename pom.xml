@@ -22,7 +22,6 @@
 	<inceptionYear>2015</inceptionYear>
 	
     <dependencies>
-		
 		<dependency>
 		    <groupId>com.ibm</groupId>
 		    <artifactId>com.ibm.mq</artifactId>
@@ -35,8 +34,7 @@
 			<groupId>javax.resource</groupId>
 			<artifactId>connector-api</artifactId>
 			<version>1.5</version>
-		</dependency>
-				
+		</dependency>	
     </dependencies>
 
     <build>
