@@ -6,7 +6,21 @@
     <version>0.0.1</version>
     <name>jmsTool</name>
     <packaging>jar</packaging>
-    
+	<url>https://github.com/dubasdey/MQTrafficTestTools</url>
+	<scm>
+		<url>https://github.com/dubasdey/MQTrafficTestTools</url>
+		<tag>master</tag>
+	</scm>
+	<issueManagement>
+		<url>https://github.com/dubasdey/MQTrafficTestTools/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<url>https://travis-ci.org/dubasdey/MQTrafficTestTools</url>
+		<system>TravisCI</system>
+	</ciManagement>
+	<description>Websphere MQ tools to generate or comsume messages</description>
+	<inceptionYear>2015</inceptionYear>
+	
     <dependencies>
 		
 		<dependency>
@@ -18,11 +32,9 @@
 		</dependency>
 		
 		<dependency>
-		    <groupId>com.ibm</groupId>
-		    <artifactId>connector</artifactId>
-		    <version>1.0</version>
-		    <scope>system</scope> 
-		    <systemPath>${project.basedir}/lib/connector.jar</systemPath>
+			<groupId>javax.resource</groupId>
+			<artifactId>connector-api</artifactId>
+			<version>1.5</version>
 		</dependency>
 				
     </dependencies>
@@ -41,8 +53,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 					<optimize>true</optimize>
 					<debug>false</debug>
 				</configuration>
@@ -73,32 +85,21 @@
 					<finalName>${finalName}</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
 					<attach>false</attach>
-					<archive>
-		        		<index>true</index>
-		          		<manifestEntries>
-		          			<Class-Path>lib/com.ibm.mq.jar lib/connector.jar</Class-Path>
-		          		</manifestEntries>
-		        	</archive>
-		        	<descriptorRefs>
-		          		<descriptorRef>jar-with-dependencies</descriptorRef>
-		        	</descriptorRefs>
-		        	<dependencySet>
-						<scope>system</scope>
-					 	<includes>
-					    	<include>*.jar</include>
-					  	</includes>
-					  	<outputDirectory>lib</outputDirectory>
-					</dependencySet>
 		      	</configuration>
 				<executions>
-				    <execution>
-				      <id>make-assembly</id>
-				      <phase>package</phase>
-				      <goals>
-				        <goal>single</goal>
-				      </goals>
-				    </execution>
-				</executions>		      	
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>	      	
 			</plugin>			
     	</plugins>
     </build>
