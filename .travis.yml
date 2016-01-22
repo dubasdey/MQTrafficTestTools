@@ -5,7 +5,12 @@ jdk:
 deploy:
   provider: releases
   api_key: $GITAPI
-  file: "target/jmsTool.jar"
+  file: 
+    - "target/jmsTool.jar"
+    - "runReceiver.bat"
+    - "runReceiver.sh"
+    - "runSender.bat"
+    - "runSender.sh"
   skip_cleanup: true
   on:
     tags: true
